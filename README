@@ -2,5 +2,5 @@ Mission 2a: Chose à faire
 
 retour des listes visiteurs / lien pour aller sur un form / gerer un etat d'un visiteur choisi
 
-liste (nom/pernom) visiteurs +ajouter(generation aleatoire mdp + id / generer etat visiteurs) supprimer  modifier (sans modif mdp) 
+liste (nom/pernom) visiteurs(aimane) +ajouter(generation aleatoire mdp + id / generer etat visiteurs(Alex)) supprimer  modifier (sans modif mdp) (arka)
 / crée doc pdf avec liste d'embauche trié par date d'embauches
