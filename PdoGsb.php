@@ -218,6 +218,29 @@ class PdoGsb{
 		return $laLigne;
 	}
 
+	public function selectionneruser ($id){
+		$req="select * from visiteur where id= '$id'";
+		$stmt = $this->monPdo->query($req);
+		$laLigne = $stmt->fetchAll();
+		return $laLigne;
+	}
+
+	public function supprimerUser($id){
+		$req="Delete  from visiteur where id=$id;";
+		$stmt = $this->monPdo->query($req);
+	}
+
+	public function ajouter($id,$nom,$prenom,$login,$mdp,$adresse,$cp,$ville,$mois,$jour,$annee){
+		$date= $jour."/".$mois."/".$annee;
+		$req="insert into `visiteur`(`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES ($id,$nom,$prenom,$login,$mdp,$adresse,$cp,$ville,$date);";
+		$stmt = $this->monPdo->query($req);
+	}
+
+	public function modifierUser($id,$nom,$prenom,$login,$adresse,$cp,$ville,$date,$mdp){
+		$req="UPDATE `visiteur` SET `nom`='$nom',`prenom`='$prenom',`login`='$login',`adresse`='$adresse',`cp`='$cp',`ville`='$ville',`dateEmbauche`='$date' WHERE id='$id'";
+		$stmt = $this->monPdo->query($req);
+	}
+
 
 
 
