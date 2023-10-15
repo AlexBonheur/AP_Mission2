@@ -57,5 +57,33 @@ Route::get('listePersonne',[
         'uses'=>'etatFraisController@listePersonne',
 ]);
 
+Route::get('supprUtilisateur',[
+        'as'=>'supprimeruser',
+        'uses'=>'etatFraisController@supprUser'
+]);
 
+Route::get('ajoutuser',[
+        'as'=>'ajouteruser',
+        'uses'=>'etatFraisController@ajoutUser'
+]);
+
+Route::get('modifuser',[
+        'as'=>'modifieruser',
+        'uses'=>'etatFraisController@selectionneruser'
+]);// cette lign
+
+Route::post('modificationuser',[
+        'as'=>'modificauser',
+        'uses'=>'etatFraisController@modifierUser'
+]);
+
+Route::post('ajoutUser',[
+        'as'=>'ajoutuser',
+        'uses'=>'etatFraisController@ajouterUtilisateur'
+]);
+
+Route::get('genererPdf',[
+        'as'=>'genePdf',
+        'uses'=>'etatFraisController@genererEtat'
+]);
 
