@@ -226,19 +226,23 @@ class PdoGsb{
 	}
 
 	public function supprimerUser($id){
-		$req="Delete  from visiteur where id=$id;";
+		$req="Delete  from visiteur where id='$id';";
 		$stmt = $this->monPdo->query($req);
 	}
 
-	public function ajouter($id,$nom,$prenom,$login,$mdp,$adresse,$cp,$ville,$mois,$jour,$annee){
-		$date= $jour."/".$mois."/".$annee;
-		$req="insert into `visiteur`(`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES ($id,$nom,$prenom,$login,$mdp,$adresse,$cp,$ville,$date);";
+	public function ajouter($id,$nom,$prenom,$login,$mdp,$adresse,$cp,$ville,$date){
+		$req="insert into `visiteur`(`id`, `nom`, `prenom`, `login`, `mdp`, `adresse`, `cp`, `ville`, `dateEmbauche`) VALUES ('$id','$nom','$prenom','$login','$mdp','$adresse','$cp','$ville','$date');";
 		$stmt = $this->monPdo->query($req);
 	}
 
 	public function modifierUser($id,$nom,$prenom,$login,$adresse,$cp,$ville,$date,$mdp){
 		$req="UPDATE `visiteur` SET `nom`='$nom',`prenom`='$prenom',`login`='$login',`adresse`='$adresse',`cp`='$cp',`ville`='$ville',`dateEmbauche`='$date' WHERE id='$id'";
 		$stmt = $this->monPdo->query($req);
+	}
+
+	public function genererEtat($id){
+		$req="SELECT idVisiteur,  sum((CASE WHEN li.idFraisForfait='ETP' THEN(li.quantite*ff.montant )END)) AS 'ETP',sum((CASE WHEN li.idFraisForfait='NUI' THEN(li.quantite*ff.montant )END)) as 'NUI',sum((CASE WHEN li.idFraisForfait='REP' THEN(li.quantite*ff.montant )END)) AS 'REP',sum((CASE WHEN li.idFraisForfait='KM' THEN(li.quantite*ff.montant )END)) AS 'KM' from lignefraisforfait li INNER JOIN fraisforfait ff ON li.idFraisForfait=ff.id WHERE idVisiteur='$id';";
+		$stmt=$this->monPdo->query($req);
 	}
 
 
