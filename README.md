@@ -119,3 +119,4 @@ function test(){
      <h1>titre</h1> 
     @endsection 
 ```
+PS : ajouter le dossier vendor à la racine du projet pour réussir à le lancer
